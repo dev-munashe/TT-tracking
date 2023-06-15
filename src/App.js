@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Header from "./components/Header";
 import Tasks from './components/Tasks';
+import Input from './components/Input';
 
 function App(props) {
   const [tasks, setTasks] = useState([
@@ -35,9 +36,14 @@ function onToggle (id) {
   console.log("show: ", id)
 }
 
+function handleClick(){
+  console.log('Hello');
+}
+
   return (
     <div className="container">
-      <Header title="Task Tracker"/>
+      <Header title="Task Tracker" handleClick={handleClick} />
+      <Input />
       {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={onToggle}/> : "No tasks to show"}
     </div>
   );
