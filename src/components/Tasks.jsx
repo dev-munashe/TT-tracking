@@ -1,9 +1,6 @@
 import Task from "./Task"
 
 function Tasks({tasks, onDelete, onToggle}) {
-function onClick() {
-    console.log("Hello but")
-}
 
   return (
     <div>
