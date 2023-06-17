@@ -23,7 +23,9 @@ function App(props) {
         day: 'Feb 5th at 2:30pm',
         reminder: false,
     }
-]) 
+]);
+
+const [showAddTask, setShowAddTask] = useState(false);
 
 function deleteTask(id) {
 
@@ -36,14 +38,18 @@ function onToggle (id) {
   console.log("show: ", id)
 }
 
-function handleClick(){
-  console.log('Hello');
+function handleSubmit(task) {
+  debugger;
+  const id = Math.floor(Math.random() * 1000)+1
+  const newTask = {id, ...task};
+  console.log(newTask);
+  setTasks([...tasks, newTask]);
 }
 
   return (
     <div className="container">
-      <Header title="Task Tracker" handleClick={handleClick} />
-      <Input />
+      <Header title="Task Tracker" handleClick={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
+    {showAddTask && <Input handleSubmit={handleSubmit} />}
       {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={onToggle}/> : "No tasks to show"}
     </div>
   );
